@@ -1,0 +1,57 @@
+.app-container {
+  display: flex;
+}
+
+.content {
+  width: 100%;
+}
+
+/* .sidebar {
+  min-height: 800px;
+} */
+
+.post-card {
+  margin: 10px 50px;
+  width: 18rem;
+  /* height: 20rem; */
+}
+
+.post-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* gap: 10px; */
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.hashtag {
+  margin: 0 3px;
+}
+
+.dlt-btn {
+  margin: 10px 10px;
+}
+
+/* .container {
+  display: flex;
+  flex-direction: row;
+} */
+
+.create-post {
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.message {
+  /* background-color: antiquewhite; */
+  color: brown;
+  margin: 100px 0;
+  font-weight: 800;
+  font-family: "Georgia", serif;
+}
+
+.spinner {
+  margin-top: 10%;
+}
