@@ -7,57 +7,57 @@ import LoadingSpinner from "./LoadingSpinner";
 const PostList = () => {
   const { postList, addInitialPosts } = useContext(PostListData);
 
-  const [fetching, setFetching] = useState(false);
-
-  useEffect(() => {
-    setFetching(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        setFetching(false);
-      });
-    return () => {
-      console.log("Cleaning up useEffect");
-      controller.abort();
-    };
-  }, []);
-
-// const [fetching, setFetching] = useState(false);
+  // const [fetching, setFetching] = useState(false);
 
   // useEffect(() => {
+  //   setFetching(true);
   //   const controller = new AbortController();
   //   const signal = controller.signal;
 
-  //   const fetchPosts = async () => {
-  //     try {
-  //       setFetching(true);
-
-  //       const response = await fetch("https://dummyjson.com/posts",{signal});
-  //       const data = await response.json();
-
+  //   fetch("https://dummyjson.com/posts", {signal })
+  //     .then((res) => res.json())
+  //     .then((data) => {
   //       addInitialPosts(data.posts);
-  //     } catch (error) {
-  //       if (error.id === "AbortError") {
-  //         console.log("Fetch Abort");
-  //       } else {
-  //         console.error("Error fetching posts:", error);
-  //       }
-  //     } finally {
   //       setFetching(false);
-  //     }
-  //   };
-
-  //   fetchPosts();
-
+  //     });
   //   return () => {
   //     console.log("Cleaning up useEffect");
   //     controller.abort();
   //   };
   // }, []);
+
+const [fetching, setFetching] = useState(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    const fetchPosts = async () => {
+      try {
+        setFetching(true);
+
+        const response = await fetch("https://dummyjson.com/posts",{signal});
+        const data = await response.json();
+
+        addInitialPosts(data.posts);
+      } catch (error) {
+        if (error.name === "AbortError") {
+          console.log("Fetch Abort");
+        } else {
+          console.error("Error fetching posts:", error);
+        }
+      } finally {
+        setFetching(false);
+      }
+    };
+
+    fetchPosts();
+
+    return () => {
+      console.log("Cleaning up useEffect");
+      controller.abort();
+    };
+  }, []);
 
   return (
     <>

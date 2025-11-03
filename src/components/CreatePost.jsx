@@ -5,8 +5,7 @@ const CreatePost = () => {
   const { addPost } = useContext(PostListData);
 
   const userIdElement = useRef();
-  const postTitleElement = useRef();
-  const postImageElement = useRef();
+  const postTitleElement = useRef(); 
   const postBodyElement = useRef();
   const postTagsElement = useRef();
 
@@ -14,13 +13,13 @@ const CreatePost = () => {
     event.preventDefault();
     const userId = userIdElement.current.value;
     const postTitle = postTitleElement.current.value;
-    const postImageFile = postImageElement.current.files[0];
+ 
     const postBody = postBodyElement.current.value;
     const postTags = postTagsElement.current.value.split(" ");
 
     const imageUrl = URL.createObjectURL(postImageFile);
 
-    addPost(userId, postTitle,imageUrl, postBody, postTags);
+    addPost(userId, postTitle,  postBody, postTags);
 
     event.target.reset();
   };
@@ -51,18 +50,7 @@ const CreatePost = () => {
           placeholder="How are you feeling today..."
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="image" className="form-label">
-          Post Image
-        </label>
-        <input
-          type="file"
-          ref={postImageElement}
-          className="form-control"
-          id="image"
-          accept="image/*"
-        />
-      </div>
+    
       <div className="mb-3">
         <label htmlFor="body" className="form-label">
           Post Content

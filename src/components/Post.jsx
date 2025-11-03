@@ -6,8 +6,7 @@ import {PostList as PostListData } from "../store/post-list-store";
 const Post = ({ post }) => {
   const {deletePost} = useContext(PostListData)
   return (
-    <div className="card post-card ">
-      <img src={post.image} className="card-img-top" alt="preview" />
+    <div className="card post-card "> 
       <div className="card-body">
         <h5 className="card-title">
           {post.title}
